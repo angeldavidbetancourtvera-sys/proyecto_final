@@ -1,0 +1,13 @@
+<h2>Página de Inicio</h2>
+
+{% if user.is_authenticated %}
+  <p>¡Hola, bienvenido de nuevo <strong>{{ user.username }}</strong>!</p>
+  <!-- Enlace para cerrar sesión -->
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Cerrar Sesión</button>
+  </form>
+{% else %}
+  <p>No has iniciado sesión.</p>
+  <a href="{% url 'login' %}">Iniciar Sesión</a>
+{% endif %}

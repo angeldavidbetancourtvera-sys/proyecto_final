@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from homeworks import views  # Importa las vistas de tu app
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include('homeworks.urls')), 
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('accounts.urls')),
+    
+    # Esta es la ruta raíz '/' a donde redirige el login y el logout
+    path('', views.home, name='home'), 
 ]
